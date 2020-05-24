@@ -1,15 +1,33 @@
 package br.com.flf.doacao.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "usuarios")
 public class Usuario {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String email;
+	
+	@Column(name = "cpf_ou_cnpj")
 	private String cpfOuCnpj;
-	private List<String> telefones = new ArrayList<>();
+	
+	@ElementCollection
+	@CollectionTable(name = "telefones")
+	private Set<String> telefones = new HashSet<>();
 	
 	public Usuario() {}
 
@@ -53,11 +71,11 @@ public class Usuario {
 		this.cpfOuCnpj = cpfOuCnpj;
 	}
 
-	public List<String> getTelefones() {
+	public Set<String> getTelefones() {
 		return telefones;
 	}
 
-	public void setTelefones(List<String> telefones) {
+	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
 	}
 
