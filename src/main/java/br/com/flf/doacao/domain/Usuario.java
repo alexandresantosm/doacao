@@ -13,13 +13,12 @@ public class Usuario {
 	
 	public Usuario() {}
 
-	public Usuario(Long id, String nome, String email, String cpfOuCnpj, List<String> telefones) {
+	public Usuario(Long id, String nome, String email, String cpfOuCnpj) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpfOuCnpj = cpfOuCnpj;
-		this.telefones = telefones;
 	}
 
 	public Long getId() {
