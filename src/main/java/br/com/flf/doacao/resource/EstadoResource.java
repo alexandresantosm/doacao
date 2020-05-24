@@ -9,29 +9,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.flf.doacao.domain.Usuario;
-import br.com.flf.doacao.service.UsuarioService;
+import br.com.flf.doacao.domain.Estado;
+import br.com.flf.doacao.service.EstadoService;
 
 @RestController
 @RequestMapping("/api")
-public class UsuarioResource {
+public class EstadoResource {
 
 	@Autowired
-	private UsuarioService usuarioService;
+	private EstadoService estadoService;
 	
-	@GetMapping("/usuarios")
-	public ResponseEntity<List<Usuario>> list() {
+	@GetMapping("/estados")
+	public ResponseEntity<List<Estado>> list() {
 		
-		List<Usuario> usuarios = usuarioService.listar();
+		List<Estado> estados = estadoService.listar();
 		
-		return ResponseEntity.ok(usuarios);
+		return ResponseEntity.ok(estados);
 	}
 	
-	@GetMapping("/usuarios/{id}")
+	@GetMapping("/estados/{id}")
 	public ResponseEntity<?> find(@PathVariable Long id) {
 		
-		Usuario usuario = usuarioService.buscar(id);
+		Estado estado = estadoService.buscar(id);
 		
-		return ResponseEntity.ok(usuario);
+		return ResponseEntity.ok(estado);
 	}
 }
