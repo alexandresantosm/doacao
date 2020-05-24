@@ -32,6 +32,6 @@ public class UsuarioService {
 		
 		return usuario.orElseThrow(
 				() -> new ObjectNotFoundException("Nenhum usuário foi encontrado com o ID: " + id + ", Tipo: " + Usuario.class.getName())
-				);
+			);
 	}
 }

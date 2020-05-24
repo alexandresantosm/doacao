@@ -25,7 +25,6 @@ public class UsuarioResource {
 		List<Usuario> usuarios = usuarioService.listar();
 		
 		if (usuarios.isEmpty()) {
-			System.out.println("menssagem: Nenhum registro foi encontrado!");
 			return ResponseEntity.notFound().build();
 		}
 		
