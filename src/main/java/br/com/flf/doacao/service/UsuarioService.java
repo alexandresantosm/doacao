@@ -31,7 +31,8 @@ public class UsuarioService {
 		Optional<Usuario> usuario = usuarioRepository.findById(id);
 		
 		return usuario.orElseThrow(
-				() -> new ObjectNotFoundException("Nenhum usuário foi encontrado com o ID: " + id + ", Tipo: " + Usuario.class.getName())
+				() -> new ObjectNotFoundException(
+						"Nenhum usuário foi encontrado com o ID: " + id + ", Tipo: " + Usuario.class.getName())
 			);
 	}
 }

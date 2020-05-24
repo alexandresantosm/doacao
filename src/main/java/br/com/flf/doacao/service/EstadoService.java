@@ -31,7 +31,8 @@ public class EstadoService {
 		Optional<Estado> estado = estadoRepository.findById(id);
 		
 		return estado.orElseThrow(
-				() -> new ObjectNotFoundException("Nenhum estado foi encontrado com o ID: " + id + ", Tipo: " + Estado.class.getName())
+				() -> new ObjectNotFoundException(
+						"Nenhum estado foi encontrado com o ID: " + id + ", Tipo: " + Estado.class.getName())
 			);
 	}
 }

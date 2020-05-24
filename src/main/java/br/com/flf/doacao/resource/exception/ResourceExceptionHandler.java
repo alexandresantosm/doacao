@@ -1,5 +1,7 @@
 package br.com.flf.doacao.resource.exception;
 
+import java.time.LocalDateTime;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
@@ -17,7 +19,7 @@ public class ResourceExceptionHandler {
 		
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		
-		StandardError erro = new StandardError(status.value(), error.getMessage(), System.currentTimeMillis());
+		StandardError erro = new StandardError(status.value(), error.getMessage(), LocalDateTime.now());
 		
 		return ResponseEntity.status(status).body(erro);
 	}
