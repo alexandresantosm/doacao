@@ -8,7 +8,6 @@ public class DoaçãoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DoaçãoApplication.class, args);
-		System.out.println("Aplicação subiu...");
 	}
 
 }
