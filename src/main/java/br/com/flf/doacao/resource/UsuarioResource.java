@@ -33,14 +33,9 @@ public class UsuarioResource {
 	}
 	
 	@GetMapping("/usuarios/{id}")
-	public ResponseEntity<Usuario> find(@PathVariable Long id) {
+	public ResponseEntity<?> find(@PathVariable Long id) {
 		
 		Usuario usuario = usuarioService.buscar(id);
-		
-		if (usuario == null) {
-			System.out.println("menssagem: Nenhum usuário foi encontrado com esse id: " + id + "!");
-			return ResponseEntity.notFound().build();
-		}
 		
 		return ResponseEntity.ok(usuario);
 	}
