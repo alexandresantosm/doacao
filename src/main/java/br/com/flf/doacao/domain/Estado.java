@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="estados")
 public class Estado {
@@ -25,6 +27,7 @@ public class Estado {
 	private String nome;
 	
 	@OneToMany(mappedBy = "estado")
+	@JsonIgnore
 	private List<Cidade> cidades = new ArrayList<>();
 
 	public Estado() {
