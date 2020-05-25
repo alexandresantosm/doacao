@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.com.flf.doacao.domain.enums.TipoUsuario;
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
@@ -35,15 +37,18 @@ public class Usuario {
 	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 
+	private Integer tipo;
+
 	public Usuario() {
 	}
 
-	public Usuario(Long id, String nome, String email, String cpfOuCnpj) {
+	public Usuario(Long id, String nome, String email, String cpfOuCnpj, TipoUsuario tipo) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpfOuCnpj = cpfOuCnpj;
+		this.tipo = tipo.getCodigo();
 	}
 
 	public Long getId() {
@@ -92,6 +97,14 @@ public class Usuario {
 
 	public void setEnderecos(List<Endereco> enderecos) {
 		this.enderecos = enderecos;
+	}
+
+	public TipoUsuario getTipo() {
+		return TipoUsuario.toEnum(tipo);
+	}
+
+	public void setTipo(TipoUsuario tipo) {
+		this.tipo = tipo.getCodigo();
 	}
 
 	@Override
