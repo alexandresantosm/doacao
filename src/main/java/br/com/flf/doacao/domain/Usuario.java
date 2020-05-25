@@ -34,7 +34,7 @@ public class Usuario {
 	@CollectionTable(name = "telefones")
 	private Set<String> telefones = new HashSet<>();
 
-	@OneToMany(mappedBy = "cliente")
+	@OneToMany(mappedBy = "usuario")
 	private List<Endereco> enderecos = new ArrayList<>();
 
 	private Integer tipo;
