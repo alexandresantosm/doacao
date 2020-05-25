@@ -1,6 +1,8 @@
 package br.com.flf.doacao.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CollectionTable;
@@ -10,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,15 +24,19 @@ public class Usuario {
 	private Long id;
 	private String nome;
 	private String email;
-	
+
 	@Column(name = "cpf_ou_cnpj")
 	private String cpfOuCnpj;
-	
+
 	@ElementCollection
 	@CollectionTable(name = "telefones")
 	private Set<String> telefones = new HashSet<>();
-	
-	public Usuario() {}
+
+	@OneToMany(mappedBy = "cliente")
+	private List<Endereco> enderecos = new ArrayList<>();
+
+	public Usuario() {
+	}
 
 	public Usuario(Long id, String nome, String email, String cpfOuCnpj) {
 		super();
@@ -79,6 +86,14 @@ public class Usuario {
 		this.telefones = telefones;
 	}
 
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -103,5 +118,5 @@ public class Usuario {
 			return false;
 		return true;
 	}
-	
+
 }
