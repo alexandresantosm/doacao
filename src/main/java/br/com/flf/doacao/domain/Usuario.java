@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.flf.doacao.domain.enums.TipoUsuario;
 
 @Entity
@@ -35,6 +37,7 @@ public class Usuario {
 	private Set<String> telefones = new HashSet<>();
 
 	@OneToMany(mappedBy = "usuario")
+	@JsonIgnore
 	private List<Endereco> enderecos = new ArrayList<>();
 
 	private Integer tipo;
